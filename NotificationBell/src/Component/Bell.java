@@ -2,13 +2,13 @@
 package Component;
 
 import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.Graphics; dg vu
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.plaf.basic.BasicButtonUI;
-h
+hf
 
 public class Bell extends JButton{
 
