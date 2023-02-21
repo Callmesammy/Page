@@ -54,14 +54,15 @@ public class ButtonBell extends JButton{
                 Graphics2D g2 = (Graphics2D)g.create();
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-                double size = Math.max(iconRect.getWidth(), iconRect.getHeight()) +0.9f;
-                double x = Math.min(iconRect.getWidth(), iconRect.getHeight()c.getWidth()) ;
-                double y = Math.max(iconRect.getWidth(), iconRect.getHeight()) ;
+                double size = Math.max(iconRect.getWidth(), iconRect.getHeight()) +0.8f;
+                double x = Math.min(iconRect.getX()+ iconRect.getWidth()/2, c.getWidth() -size);
+                double y = Math.max(iconRect.getY() - size/2, 0);
                 Area area = new Area(iconRect);
                 area.subtract(new Area(new Ellipse2D.Double(x, y, size, size)));
                 g2.setPaint(new TexturePaint(image, iconRect));
                 g2.fill(area);
                 
+                // Test
                 g2.setColor(clr);
                g2.draw(new Area(new Ellipse2D.Double(x, y, size, size)));
                 
