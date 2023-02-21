@@ -2,14 +2,16 @@
 package Component;
 
 import java.awt.Color;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.TexturePaint;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -61,10 +63,9 @@ public class ButtonBell extends JButton{
                 area.subtract(new Area(new Ellipse2D.Double(x, y, size, size)));
                 g2.setPaint(new TexturePaint(image, iconRect));
                 g2.fill(area);
-                
-                // Test
-                g2.setColor(clr);
-               g2.draw(new Area(new Ellipse2D.Double(x, y, size, size)));
+               
+                String txt = getText();
+                createtext(g2, x, y, size, txt);
                 
                 g2.dispose();
                 
@@ -72,6 +73,17 @@ public class ButtonBell extends JButton{
                  super.paintIcon(g, c, iconRect); 
             }
            
+        }
+        
+        private void createtext (Graphics2D g2, double x, double  y, double size, String txt){
+            FontMetrics fd = g2.getFontMetrics();
+            Rectangle2D g3 = fd.getStringBounds(txt, g2);
+            double space = size * 0.08f;
+            double width = Math.max(size-space *2, g3.getWidth() +10);
+            double height = size -space *2;
+            g2.setColor(clr);
+            g2.translate(x, y);
+            g2.fill(new RoundRectangle2D.Double(space, space, width, height, height, height));
         }
         
     }
