@@ -6,6 +6,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.TexturePaint;
+import java.awt.geom.Area;
+import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -20,7 +24,7 @@ import javax.swing.plaf.basic.BasicButtonUI;
 public class ButtonBell extends JButton{
 
     private BufferedImage image;
-    private Color clr = new Color(231,7,4);
+    private Color clr = new Color(231,77,114);
     public ButtonBell() {
         setUI(new BasicBTN());
     }
@@ -47,6 +51,21 @@ public class ButtonBell extends JButton{
         @Override
         protected void paintIcon(Graphics g, JComponent c, Rectangle iconRect) {
             if (image != null && !getText().equals("")) {
+                Graphics2D g2 = (Graphics2D)g.create();
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+                double size = Math.max(iconRect.getWidth(), iconRect.getHeight()) +0.9f;
+                double x = Math.min(iconRect.getWidth(), iconRect.getHeight()c.getWidth()) ;
+                double y = Math.max(iconRect.getWidth(), iconRect.getHeight()) ;
+                Area area = new Area(iconRect);
+                area.subtract(new Area(new Ellipse2D.Double(x, y, size, size)));
+                g2.setPaint(new TexturePaint(image, iconRect));
+                g2.fill(area);
+                
+                g2.setColor(clr);
+               g2.draw(new Area(new Ellipse2D.Double(x, y, size, size)));
+                
+                g2.dispose();
                 
             }else{
                  super.paintIcon(g, c, iconRect); 
