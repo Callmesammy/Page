@@ -15,6 +15,7 @@ public class LoginPge extends javax.swing.JPanel {
      */
     public LoginPge() {
         initComponents();
+        
     }
 
     /**
@@ -50,11 +51,11 @@ public class LoginPge extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel1)
-                .addGap(70, 70, 70)
-                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(textField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(253, 253, 253))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Path2D;
+import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
@@ -21,6 +22,8 @@ public class panel_Background extends javax.swing.JLayeredPane {
 
     private Animator animate; 
     private float minate = 1f;
+    private LoginPge loginPge;
+    private MigLayout layout;
     
     public panel_Background() {
         initComponents();
@@ -29,6 +32,10 @@ public class panel_Background extends javax.swing.JLayeredPane {
     }
 
     private void init(){
+        layout = new MigLayout("inset 0","[fill]", "[fill]");
+        setLayout(layout);
+        loginPge = new LoginPge();
+        loginPge.setOpaque(false);
         TimingTarget target = new TimingTargetAdapter(){
             @Override
             public void timingEvent(float fraction) {
@@ -38,6 +45,7 @@ public class panel_Background extends javax.swing.JLayeredPane {
         };
         animate = new Animator(1500, target);
         animate.setResolution(0);
+        add(loginPge);
     }
    
     public void Start(){
