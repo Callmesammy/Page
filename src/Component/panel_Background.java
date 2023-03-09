@@ -24,6 +24,8 @@ public class panel_Background extends javax.swing.JLayeredPane {
     private float minate = 1f;
     private LoginPge loginPge;
     private MigLayout layout;
+    private RegisterPge registerPge;
+    private boolean selected;
     
     public panel_Background() {
         initComponents();
@@ -36,20 +38,50 @@ public class panel_Background extends javax.swing.JLayeredPane {
         setLayout(layout);
         loginPge = new LoginPge();
         loginPge.setOpaque(false);
+        registerPge = new RegisterPge();
+        registerPge.setVisible(false);
         TimingTarget target = new TimingTargetAdapter(){
+            @Override
+            public void begin() {
+                if (selected) {
+                    registerPge.setVisible(true);
+                    
+                }else{
+                    registerPge.setVisible(true);
+                }
+            }
+            
+            
             @Override
             public void timingEvent(float fraction) {
                 minate = fraction;
+                double width = getWidth();
+                float a = easeInBounce(minate);
+                int x = (int) (a *width);
+                layout.setComponentConstraints(registerPge, "pos " +x+ "100% 100%");
                 repaint();
             }
+
+            @Override
+            public void end() {
+                if (selected) {
+                    loginPge.setVisible(false);
+                }else{
+                    loginPge.setVisible(selected);
+                }
+              
+            }
+            
         };
         animate = new Animator(1500, target);
         animate.setResolution(0);
         add(loginPge);
+        add(registerPge, " pos 0 0 0 0, w 0!");
     }
    
-    public void Start(){
-        animate.start();
+    public void Start(boolean selected){
+        Start = selected;
+       animate.start();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -69,7 +101,8 @@ public class panel_Background extends javax.swing.JLayeredPane {
 
     @Override
     public void paint(Graphics g) {
-        Graphics2D g2 = (Graphics2D)g.create();
+        if (selected == false) {
+             Graphics2D g2 = (Graphics2D)g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(getBackground());
         int width = getWidth();
@@ -82,31 +115,32 @@ public class panel_Background extends javax.swing.JLayeredPane {
         t.lineTo(x, height);
         t.curveTo(x, height, easeInBounce(minate)*width, CenterX, x, y);
         g2.fill(t);
-        super.paint(g); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        }
+        super.paint(g); 
     }
 
-    private float easeOutBounce(float x) {
-float n1 = 7.5625f;
-float d1 = 2.75f;
-   double v;
-if (x < 1 / d1) {
-     v = n1 * x * x;
-} else if (x < 2 / d1) {
-    v = n1 * (x -= 1.5 / d1) * x + 0.75;
-} else if (x < 2.5 / d1) {
-    v=  n1 * (x -= 2.25 / d1) * x + 0.9375;
-} else {
-    v = n1 * (x -= 2.625 / d1) * x + 0.984375;
-}
-return (float)v;
-}
-    
-    private float easeInBounce(float x) {
-        double v;
-v = 1 - easeOutBounce(1 - x);
-return (float)v;
+        private float easeOutBounce(float x) {
+    float n1 = 7.5625f;
+    float d1 = 2.75f;
+       double v;
+    if (x < 1 / d1) {
+         v = n1 * x * x;
+    } else if (x < 2 / d1) {
+        v = n1 * (x -= 1.5 / d1) * x + 0.75;
+    } else if (x < 2.5 / d1) {
+        v=  n1 * (x -= 2.25 / d1) * x + 0.9375;
+    } else {
+        v = n1 * (x -= 2.625 / d1) * x + 0.984375;
+    }
+    return (float)v;
+    }
 
-}
+        private float easeInBounce(float x) {
+            double v;
+    v = 1 - easeOutBounce(1 - x);
+    return (float)v;
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
