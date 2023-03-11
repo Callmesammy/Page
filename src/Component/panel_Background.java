@@ -39,6 +39,7 @@ public class panel_Background extends javax.swing.JLayeredPane {
         loginPge.setVisible(true);
         loginPge.setOpaque(false);
         registerPge = new RegisterPge();
+        registerPge.setBackground(new Color(121,200,150));
         registerPge.setVisible(false);
         TimingTarget target = new TimingTargetAdapter(){
             @Override
@@ -58,6 +59,7 @@ public class panel_Background extends javax.swing.JLayeredPane {
                 double width = getWidth();
                 float a = easeOutBounce(minate);
                 int x = (int) (a *width);
+                registerPge.select(selected, fraction);
                 layout.setComponentConstraints(registerPge, "pos " +x+ " 0 100% 100%");
                 revalidate();
                 repaint();
@@ -74,7 +76,7 @@ public class panel_Background extends javax.swing.JLayeredPane {
             }
             
         };
-        animate = new Animator(1500, target);
+        animate = new Animator(1000, target);
         animate.setResolution(0);
         add(loginPge);
         add(registerPge, " pos 0 0 0 0, w 0!");
