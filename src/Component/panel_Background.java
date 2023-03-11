@@ -2,6 +2,7 @@
 package Component;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -31,9 +32,11 @@ public class panel_Background extends javax.swing.JLayeredPane {
     }
 
     private void init(){
+        setPreferredSize(new Dimension(296, 437));
         layout = new MigLayout("inset 0","[fill]", "[fill]");
         setLayout(layout);
         loginPge = new LoginPge();
+        loginPge.setVisible(true);
         loginPge.setOpaque(false);
         registerPge = new RegisterPge();
         registerPge.setVisible(false);
@@ -44,7 +47,7 @@ public class panel_Background extends javax.swing.JLayeredPane {
                     registerPge.setVisible(true);
                     
                 }else{
-                    registerPge.setVisible(true);
+                    loginPge.setVisible(true);
                 }
             }
             
@@ -53,7 +56,7 @@ public class panel_Background extends javax.swing.JLayeredPane {
             public void timingEvent(float fraction) {
                 minate = fraction;
                 double width = getWidth();
-                float a = easeInBounce(minate);
+                float a = easeOutBounce(minate);
                 int x = (int) (a *width);
                 layout.setComponentConstraints(registerPge, "pos " +x+ " 0 100% 100%");
                 revalidate();
@@ -65,7 +68,7 @@ public class panel_Background extends javax.swing.JLayeredPane {
                 if (selected) {
                     loginPge.setVisible(false);
                 }else{
-                    loginPge.setVisible(selected);
+                    registerPge.setVisible(false);
                 }
               
             }
@@ -114,6 +117,7 @@ public class panel_Background extends javax.swing.JLayeredPane {
         t.lineTo(x, height);
         t.curveTo(x, height, easeInBounce(minate)*width, CenterX, x, y);
         g2.fill(t);
+        g2.dispose();
         }
         
     }
@@ -131,14 +135,25 @@ public class panel_Background extends javax.swing.JLayeredPane {
     } else {
         v = n1 * (x -= 2.625 / d1) * x + 0.984375;
     }
-    return (float)v;
+            if (selected) {
+                   return (float) (1f -v);
+ 
+            }else{
+                    return (float)v;
+
+            }
     }
 
         private float easeInBounce(float x) {
             double v;
     v = 1 - easeOutBounce(1 - x);
-    return (float)v;
+            if (selected) {
+                  return (float) (1f-v);
+  
+            }else{
+                    return (float)v;
 
+            }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
