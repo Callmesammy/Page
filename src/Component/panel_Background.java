@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package Component;
 
 import java.awt.Color;
@@ -58,7 +55,8 @@ public class panel_Background extends javax.swing.JLayeredPane {
                 double width = getWidth();
                 float a = easeInBounce(minate);
                 int x = (int) (a *width);
-                layout.setComponentConstraints(registerPge, "pos " +x+ "100% 100%");
+                layout.setComponentConstraints(registerPge, "pos " +x+ " 0 100% 100%");
+                revalidate();
                 repaint();
             }
 
@@ -79,8 +77,8 @@ public class panel_Background extends javax.swing.JLayeredPane {
         add(registerPge, " pos 0 0 0 0, w 0!");
     }
    
-    public void Start(boolean selected){
-        Start = selected;
+    public void Start(boolean show){
+        selected = show;
        animate.start();
     }
     @SuppressWarnings("unchecked")
@@ -101,8 +99,9 @@ public class panel_Background extends javax.swing.JLayeredPane {
 
     @Override
     public void paint(Graphics g) {
+        super.paint(g); 
         if (selected == false) {
-             Graphics2D g2 = (Graphics2D)g.create();
+        Graphics2D g2 = (Graphics2D)g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(getBackground());
         int width = getWidth();
@@ -116,7 +115,7 @@ public class panel_Background extends javax.swing.JLayeredPane {
         t.curveTo(x, height, easeInBounce(minate)*width, CenterX, x, y);
         g2.fill(t);
         }
-        super.paint(g); 
+        
     }
 
         private float easeOutBounce(float x) {
