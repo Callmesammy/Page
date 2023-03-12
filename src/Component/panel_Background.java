@@ -158,7 +158,7 @@ public class panel_Background extends javax.swing.JLayeredPane {
         v = n1 * (x -= 2.625 / d1) * x + 0.984375;
     }
             if (selected) {
-                   return (float) (1f -v);
+                   return (float) (1f - v);
  
             }else{
                     return (float)v;
