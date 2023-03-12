@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Path2D;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
@@ -27,20 +29,22 @@ public class panel_Background extends javax.swing.JLayeredPane {
     
     public panel_Background() {
         initComponents();
-        setBackground(new Color(121,200,150));
+      
         init();
     }
 
-    private void init(){
-        setPreferredSize(new Dimension(296, 437));
+    private void init(){  
+        setBackground(new Color(105, 139, 249));
+        setPreferredSize(new Dimension(296, 350));
         layout = new MigLayout("inset 0","[fill]", "[fill]");
         setLayout(layout);
         loginPge = new LoginPge();
-        loginPge.setVisible(true);
-        loginPge.setOpaque(false);
+//        loginPge.setVisible(true);
+//        loginPge.setOpaque(false);
         registerPge = new RegisterPge();
-        registerPge.setBackground(new Color(121,200,150));
+        registerPge.setBackground(new Color(105, 139, 249));
         registerPge.setVisible(false);
+        
         TimingTarget target = new TimingTargetAdapter(){
             @Override
             public void begin() {
@@ -55,9 +59,9 @@ public class panel_Background extends javax.swing.JLayeredPane {
             
             @Override
             public void timingEvent(float fraction) {
-                minate = fraction;
                 double width = getWidth();
-                float a = easeOutBounce(minate);
+                minate = fraction;
+                float a = easeOutBounce(fraction);
                 int x = (int) (a *width);
                 registerPge.select(selected, fraction);
                 layout.setComponentConstraints(registerPge, "pos " +x+ " 0 100% 100%");
@@ -78,10 +82,26 @@ public class panel_Background extends javax.swing.JLayeredPane {
         };
         animate = new Animator(1000, target);
         animate.setResolution(0);
-        add(loginPge);
         add(registerPge, " pos 0 0 0 0, w 0!");
+            add(loginPge);
+            loginPge.addEventButt(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!animate.isRunning()) {
+                     Start(true);
+                }
+            }
+            });
+            registerPge.EventStop(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!animate.isRunning()) {
+                    Start(false);
+                }
+            }
+            });
+
     }
-   
     public void Start(boolean show){
         selected = show;
        animate.start();
@@ -104,7 +124,7 @@ public class panel_Background extends javax.swing.JLayeredPane {
 
     @Override
     public void paint(Graphics g) {
-        super.paint(g); 
+      super.paint(g); 
         if (selected == false) {
         Graphics2D g2 = (Graphics2D)g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -119,7 +139,7 @@ public class panel_Background extends javax.swing.JLayeredPane {
         t.lineTo(x, height);
         t.curveTo(x, height, easeInBounce(minate)*width, CenterX, x, y);
         g2.fill(t);
-        g2.dispose();
+        g2.dispose();  
         }
         
     }
