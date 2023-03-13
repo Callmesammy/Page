@@ -88,7 +88,10 @@ public class panel_Background extends javax.swing.JLayeredPane {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!animate.isRunning()) {
-                     Start(true);
+                    if (loginPge.doneText()) {
+                          Start(true);
+                    }
+                   
                 }
             }
             });

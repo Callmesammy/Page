@@ -1,6 +1,7 @@
 
 package Component;
 
+import ModeK.Model;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -20,13 +21,14 @@ public class RegisterPge extends javax.swing.JPanel {
     private float minate;
     private Animator animate;
     private boolean iSselected; 
+    private Model data;
     
     public RegisterPge() {
         initComponents();
         setOpaque(false); 
         
-        loading.setVisible(true);
-        ProfileCom.setVisible(false);
+        loading.setVisible(false);
+        ProfileCom.setVisible(true);
         Message.setVisible(false);
         init();
     }
@@ -74,15 +76,19 @@ public class RegisterPge extends javax.swing.JPanel {
         
     }
     
-    private void doneModel(){
+    private void doneModel(Model data){
+        this.data = data;
+        pic.setIcon(data.getPicture());
+        Cmd1.setText("Entere text here" + data.getText());
         
     }
+ 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         loading = new swing.panelTransparent();
-        jLabel3 = new javax.swing.JLabel();
+        text = new javax.swing.JLabel();
         Cmd1 = new swing.Button();
         Message = new swing.panelTransparent();
         Cmd = new swing.Button();
@@ -94,8 +100,8 @@ public class RegisterPge extends javax.swing.JPanel {
 
         setLayout(new java.awt.CardLayout());
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pics/f.gif"))); // NOI18N
+        text.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        text.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pics/f.gif"))); // NOI18N
 
         Cmd1.setBackground(new java.awt.Color(85, 120, 227));
         Cmd1.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -114,7 +120,7 @@ public class RegisterPge extends javax.swing.JPanel {
             loadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loadingLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                .addComponent(text, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
                 .addGap(17, 17, 17))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loadingLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -125,7 +131,7 @@ public class RegisterPge extends javax.swing.JPanel {
             loadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loadingLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(Cmd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48))
@@ -281,8 +287,8 @@ public class RegisterPge extends javax.swing.JPanel {
     private swing.panelTransparent Message;
     private swing.panelTransparent ProfileCom;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private swing.panelTransparent loading;
     private swing.ImageAvatar pic;
+    private javax.swing.JLabel text;
     // End of variables declaration//GEN-END:variables
 }

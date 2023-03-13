@@ -18,6 +18,10 @@ public class LoginPge extends javax.swing.JPanel {
         
     }
 
+    
+    public boolean doneText(){
+        return !(txtUser.getText().trim().equals("")|| String.valueOf(txtPwsd.getPassword()).trim().equals(""));
+    }
    
     public void addEventButt(ActionListener event){
         CmdLog.addActionListener(event);
@@ -27,16 +31,14 @@ public class LoginPge extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        passwordField1 = new swing.PasswordField();
-        passwordField2 = new swing.PasswordField();
+        txtPwsd = new swing.PasswordField();
         CmdLog = new swing.Button();
+        txtUser = new swing.TextField();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Login");
 
-        passwordField1.setLabelText("Username");
-
-        passwordField2.setLabelText("Password");
+        txtPwsd.setLabelText("Password");
 
         CmdLog.setBackground(new java.awt.Color(56, 87, 245));
         CmdLog.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -44,17 +46,20 @@ public class LoginPge extends javax.swing.JPanel {
         CmdLog.setText("Login");
         CmdLog.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
+        txtUser.setLabelText("User");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                    .addComponent(passwordField2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CmdLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPwsd, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                        .addComponent(CmdLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -63,9 +68,9 @@ public class LoginPge extends javax.swing.JPanel {
                 .addGap(41, 41, 41)
                 .addComponent(jLabel1)
                 .addGap(50, 50, 50)
-                .addComponent(passwordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(passwordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPwsd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(CmdLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(73, Short.MAX_VALUE))
@@ -76,7 +81,7 @@ public class LoginPge extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private swing.Button CmdLog;
     private javax.swing.JLabel jLabel1;
-    private swing.PasswordField passwordField1;
-    private swing.PasswordField passwordField2;
+    private swing.PasswordField txtPwsd;
+    private swing.TextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
