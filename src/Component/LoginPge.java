@@ -22,7 +22,14 @@ public class LoginPge extends javax.swing.JPanel {
     public boolean doneText(){
         return !(txtUser.getText().trim().equals("")|| String.valueOf(txtPwsd.getPassword()).trim().equals(""));
     }
-   
+
+    public String username(){
+        return txtUser.getText().trim();
+    }
+    
+    public String password(){
+        return String.valueOf(txtPwsd.getPassword()).trim();
+    }
     public void addEventButt(ActionListener event){
         CmdLog.addActionListener(event);
     }

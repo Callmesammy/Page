@@ -10,7 +10,7 @@ import javax.swing.Icon;
  *
  * @author HP
  */
-public class Model {
+public class ModelUse {
 
     /**
      * @return the number
@@ -54,10 +54,10 @@ public class Model {
         this.picture = picture;
     }
 
-    public Model() {
+    public ModelUse() {
     }
 
-    public Model(int number, String text, Icon picture) {
+    public ModelUse(int number, String text, Icon picture) {
         this.number = number;
         this.text = text;
         this.picture = picture;

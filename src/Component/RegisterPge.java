@@ -1,7 +1,7 @@
 
 package Component;
 
-import ModeK.Model;
+import ModeK.ModelUse;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -16,24 +16,34 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
  * @author HP
  */
 public class RegisterPge extends javax.swing.JPanel {
-
+ 
     private boolean selected;
     private float minate;
     private Animator animate;
     private boolean iSselected; 
-    private Model data;
+    public ModelUse data;
     
     public RegisterPge() {
         initComponents();
         setOpaque(false); 
         
-        loading.setVisible(false);
-        ProfileCom.setVisible(true);
+        loading.setVisible(true);
+        ProfileCom.setVisible(false);
         Message.setVisible(false);
         init();
     }
-    
-    private void init(){
+      public void addModel(ModelUse data){
+        this.data = data;
+        pic.setIcon(data.getPicture());
+        Cmdd.setText("Entere text " + data.getText());
+        animate.start();
+        
+    }
+      
+////      public void addModel(ModelUse data){
+////          data.
+////      }
+    public void init(){
         TimingTarget target = new TimingTargetAdapter(){
             @Override
             public void begin() {
@@ -71,34 +81,83 @@ public class RegisterPge extends javax.swing.JPanel {
     
     public void EventStop(ActionListener event){
         Cmd.addActionListener(event);
+        Cmd1.addActionListener(event);
         Cmd2.addActionListener(event);
-        Cmdd.addActionListener(event);
         
     }
     
-    private void doneModel(Model data){
-        this.data = data;
-        pic.setIcon(data.getPicture());
-        Cmd1.setText("Entere text here" + data.getText());
-        
-    }
+  
  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ProfileCom = new swing.panelTransparent();
+        Cmdd = new swing.Button();
+        pic = new swing.ImageAvatar();
+        Cmd2 = new swing.Button();
         loading = new swing.panelTransparent();
         text = new javax.swing.JLabel();
         Cmd1 = new swing.Button();
         Message = new swing.panelTransparent();
         Cmd = new swing.Button();
         jLabel1 = new javax.swing.JLabel();
-        ProfileCom = new swing.panelTransparent();
-        Cmdd = new swing.Button();
-        pic = new swing.ImageAvatar();
-        Cmd2 = new swing.Button();
 
         setLayout(new java.awt.CardLayout());
+
+        Cmdd.setBackground(new java.awt.Color(85, 120, 227));
+        Cmdd.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        Cmdd.setForeground(new java.awt.Color(255, 255, 255));
+        Cmdd.setText("Stop");
+        Cmdd.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Cmdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CmddActionPerformed(evt);
+            }
+        });
+
+        pic.setBackground(new java.awt.Color(51, 102, 255));
+        pic.setForeground(new java.awt.Color(204, 204, 204));
+        pic.setBorderSize(2);
+        pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pics/picture.jpg"))); // NOI18N
+
+        Cmd2.setBackground(new java.awt.Color(85, 120, 227));
+        Cmd2.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        Cmd2.setForeground(new java.awt.Color(255, 255, 255));
+        Cmd2.setText("Stop");
+        Cmd2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        javax.swing.GroupLayout ProfileComLayout = new javax.swing.GroupLayout(ProfileCom);
+        ProfileCom.setLayout(ProfileComLayout);
+        ProfileComLayout.setHorizontalGroup(
+            ProfileComLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProfileComLayout.createSequentialGroup()
+                .addGroup(ProfileComLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ProfileComLayout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(pic, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ProfileComLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(Cmdd, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(45, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProfileComLayout.createSequentialGroup()
+                .addGap(118, 118, 118)
+                .addComponent(Cmd2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(118, 118, 118))
+        );
+        ProfileComLayout.setVerticalGroup(
+            ProfileComLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProfileComLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(pic, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(Cmdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addComponent(Cmd2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
+        );
+
+        add(ProfileCom, "card2");
 
         text.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         text.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pics/f.gif"))); // NOI18N
@@ -175,60 +234,15 @@ public class RegisterPge extends javax.swing.JPanel {
         );
 
         add(Message, "card2");
-
-        Cmdd.setBackground(new java.awt.Color(85, 120, 227));
-        Cmdd.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        Cmdd.setForeground(new java.awt.Color(255, 255, 255));
-        Cmdd.setText("Stop");
-        Cmdd.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-
-        pic.setBackground(new java.awt.Color(51, 102, 255));
-        pic.setForeground(new java.awt.Color(204, 204, 204));
-        pic.setBorderSize(2);
-        pic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pics/picture.jpg"))); // NOI18N
-
-        Cmd2.setBackground(new java.awt.Color(85, 120, 227));
-        Cmd2.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        Cmd2.setForeground(new java.awt.Color(255, 255, 255));
-        Cmd2.setText("Stop");
-        Cmd2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-
-        javax.swing.GroupLayout ProfileComLayout = new javax.swing.GroupLayout(ProfileCom);
-        ProfileCom.setLayout(ProfileComLayout);
-        ProfileComLayout.setHorizontalGroup(
-            ProfileComLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ProfileComLayout.createSequentialGroup()
-                .addGroup(ProfileComLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ProfileComLayout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(pic, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ProfileComLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(Cmdd, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(45, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProfileComLayout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(Cmd2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(118, 118, 118))
-        );
-        ProfileComLayout.setVerticalGroup(
-            ProfileComLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ProfileComLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(pic, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(Cmdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addComponent(Cmd2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
-        );
-
-        add(ProfileCom, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
     private void Cmd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cmd1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Cmd1ActionPerformed
+
+    private void CmddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CmddActionPerformed
   @Override
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D)g.create();

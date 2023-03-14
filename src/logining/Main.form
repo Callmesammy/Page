@@ -37,7 +37,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="Component.panel_Background" name="panel_Background1">
+    <Component class="Component.LoadingPage" name="panel_Background1">
     </Component>
   </SubComponents>
 </Form>

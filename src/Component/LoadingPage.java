@@ -1,6 +1,7 @@
 
 package Component;
 
+import ModeK.ModelUse;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -9,6 +10,7 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Path2D;
+import javax.swing.ImageIcon;
 import net.miginfocom.swing.MigLayout;
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
@@ -18,7 +20,7 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
  *
  * @author HP
  */
-public class panel_Background extends javax.swing.JLayeredPane {
+public class LoadingPage extends javax.swing.JLayeredPane {
 
     private Animator animate; 
     private float minate = 1f;
@@ -26,8 +28,9 @@ public class panel_Background extends javax.swing.JLayeredPane {
     private MigLayout layout;
     private RegisterPge registerPge;
     private boolean selected;
+    private Thread thr;
     
-    public panel_Background() {
+    public LoadingPage() {
         initComponents();
       
         init();
@@ -90,6 +93,7 @@ public class panel_Background extends javax.swing.JLayeredPane {
                 if (!animate.isRunning()) {
                     if (loginPge.doneText()) {
                           Start(true);
+                          userDetails(loginPge.username(), loginPge.password());
                     }
                    
                 }
@@ -100,10 +104,27 @@ public class panel_Background extends javax.swing.JLayeredPane {
             public void actionPerformed(ActionEvent e) {
                 if (!animate.isRunning()) {
                     Start(false);
+                    
                 }
             }
             });
 
+    }
+    
+    private void userDetails(String username, String paswod){
+        thr = new Thread(new Runnable() {
+            @Override
+            public void run() {
+             try {
+            Thread.sleep(200);
+            registerPge.addModel(new ModelUse(1, "Entere Text", new ImageIcon(getClass().getResource("/img/pics/picture.jpg"))));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+            }
+        });
+      
     }
     public void Start(boolean show){
         selected = show;
