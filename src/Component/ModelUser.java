@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ModeK;
+package Component;
 
 import javax.swing.Icon;
 
@@ -10,20 +10,20 @@ import javax.swing.Icon;
  *
  * @author HP
  */
-public class ModelUse {
+public class ModelUser {
 
     /**
-     * @return the number
+     * @return the picture
      */
-    public int getNumber() {
-        return number;
+    public Icon getPicture() {
+        return picture;
     }
 
     /**
-     * @param number the number to set
+     * @param picture the picture to set
      */
-    public void setNumber(int number) {
-        this.number = number;
+    public void setPicture(Icon picture) {
+        this.picture = picture;
     }
 
     /**
@@ -41,31 +41,30 @@ public class ModelUse {
     }
 
     /**
-     * @return the picture
+     * @return the decimal
      */
-    public Icon getPicture() {
-        return picture;
+    public int getDecimal() {
+        return decimal;
     }
 
     /**
-     * @param picture the picture to set
+     * @param decimal the decimal to set
      */
-    public void setPicture(Icon picture) {
+    public void setDecimal(int decimal) {
+        this.decimal = decimal;
+    }
+
+    public ModelUser() {
+    }
+
+    public ModelUser(Icon picture, String text, int decimal) {
         this.picture = picture;
-    }
-
-    public ModelUse() {
-    }
-
-    public ModelUse(int number, String text, Icon picture) {
-        this.number = number;
         this.text = text;
-        this.picture = picture;
+        this.decimal = decimal;
     }
     
-    
-    private int number; 
+    private Icon picture;
     private String text;
-    private Icon picture; 
+    private int decimal;
     
 }

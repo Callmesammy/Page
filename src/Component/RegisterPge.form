@@ -34,7 +34,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="Cmdd" min="-2" pref="244" max="-2" attributes="0"/>
+                          <Component id="texttts" min="-2" pref="244" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="45" max="32767" attributes="0"/>
@@ -52,7 +52,7 @@
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="pic" min="-2" pref="169" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="Cmdd" min="-2" max="-2" attributes="0"/>
+                  <Component id="texttts" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="72" max="32767" attributes="0"/>
                   <Component id="Cmd2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
@@ -61,7 +61,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="swing.Button" name="Cmdd">
+        <Component class="swing.Button" name="texttts">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="e3" green="78" red="55" type="rgb"/>
@@ -80,7 +80,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CmddActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textttsActionPerformed"/>
           </Events>
         </Component>
         <Container class="swing.ImageAvatar" name="pic">

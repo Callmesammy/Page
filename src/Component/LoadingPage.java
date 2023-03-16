@@ -1,7 +1,6 @@
 
 package Component;
 
-import ModeK.ModelUse;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -91,7 +90,7 @@ public class LoadingPage extends javax.swing.JLayeredPane {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!animate.isRunning()) {
-                    if (loginPge.doneText()) {
+                    if (loginPge.checkUser()) {
                           Start(true);
                           userDetails(loginPge.username(), loginPge.password());
                     }
@@ -115,16 +114,16 @@ public class LoadingPage extends javax.swing.JLayeredPane {
         thr = new Thread(new Runnable() {
             @Override
             public void run() {
-             try {
-            Thread.sleep(200);
-            registerPge.addModel(new ModelUse(1, "Entere Text", new ImageIcon(getClass().getResource("/img/pics/picture.jpg"))));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
+                try {
+                    Thread.sleep(200);
+                    registerPge.addMenuData(new ModelUser(new ImageIcon("/img/pics/picture.jpg"), "Enter Text", 1));
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
-      
+        thr.start();
     }
     public void Start(boolean show){
         selected = show;

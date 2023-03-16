@@ -19,7 +19,7 @@ public class LoginPge extends javax.swing.JPanel {
     }
 
     
-    public boolean doneText(){
+    public boolean checkUser(){
         return !(txtUser.getText().trim().equals("")|| String.valueOf(txtPwsd.getPassword()).trim().equals(""));
     }
 

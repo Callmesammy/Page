@@ -24,20 +24,23 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="panel_Background1" alignment="1" pref="308" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="loadingPage1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="panel_Background1" min="-2" pref="487" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="loadingPage1" pref="481" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="Component.LoadingPage" name="panel_Background1">
+    <Component class="Component.LoadingPage" name="loadingPage1">
     </Component>
   </SubComponents>
 </Form>

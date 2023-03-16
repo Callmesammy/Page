@@ -1,7 +1,6 @@
 
 package Component;
 
-import ModeK.ModelUse;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -21,7 +20,7 @@ public class RegisterPge extends javax.swing.JPanel {
     private float minate;
     private Animator animate;
     private boolean iSselected; 
-    public ModelUse data;
+    public ModelUser data;
     
     public RegisterPge() {
         initComponents();
@@ -32,38 +31,28 @@ public class RegisterPge extends javax.swing.JPanel {
         Message.setVisible(false);
         init();
     }
-      public void addModel(ModelUse data){
-        this.data = data;
-        pic.setIcon(data.getPicture());
-        Cmdd.setText("Entere text " + data.getText());
-        animate.start();
-        
-    }
-      
-////      public void addModel(ModelUse data){
-////          data.
-////      }
+     
     public void init(){
         TimingTarget target = new TimingTargetAdapter(){
             @Override
-            public void begin() {
+            public void begin()  {
                 if (iSselected) {
-                    ProfileCom.setVisible(true);
+                    Message.setVisible(true);
                     
                 }else{
-                    Message.setVisible(true);
+                    ProfileCom.setVisible(true);
                 }
             }
 
             @Override
             public void timingEvent(float fraction) {
                 if (iSselected) {
-                    ProfileCom.setAlpha(fraction);
+                    Message.setAlpha(fraction);
                     loading.setAlpha(1f-fraction);
                     
                     
                 }else{
-                    Message.setAlpha(fraction);
+                    ProfileCom.setAlpha(fraction);
                     loading.setAlpha(1f-fraction);
                 }
                 repaint();
@@ -86,6 +75,13 @@ public class RegisterPge extends javax.swing.JPanel {
         
     }
     
+    public void addMenuData (ModelUser data){
+        this.data = data;
+        pic.setIcon(data.getPicture());
+        texttts.setText("enter Enter" + data.getText());
+        animate.start();
+    }
+    
   
  
     @SuppressWarnings("unchecked")
@@ -93,7 +89,7 @@ public class RegisterPge extends javax.swing.JPanel {
     private void initComponents() {
 
         ProfileCom = new swing.panelTransparent();
-        Cmdd = new swing.Button();
+        texttts = new swing.Button();
         pic = new swing.ImageAvatar();
         Cmd2 = new swing.Button();
         loading = new swing.panelTransparent();
@@ -105,14 +101,14 @@ public class RegisterPge extends javax.swing.JPanel {
 
         setLayout(new java.awt.CardLayout());
 
-        Cmdd.setBackground(new java.awt.Color(85, 120, 227));
-        Cmdd.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        Cmdd.setForeground(new java.awt.Color(255, 255, 255));
-        Cmdd.setText("Stop");
-        Cmdd.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Cmdd.addActionListener(new java.awt.event.ActionListener() {
+        texttts.setBackground(new java.awt.Color(85, 120, 227));
+        texttts.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        texttts.setForeground(new java.awt.Color(255, 255, 255));
+        texttts.setText("Stop");
+        texttts.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        texttts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CmddActionPerformed(evt);
+                textttsActionPerformed(evt);
             }
         });
 
@@ -138,7 +134,7 @@ public class RegisterPge extends javax.swing.JPanel {
                         .addComponent(pic, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ProfileComLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(Cmdd, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(texttts, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProfileComLayout.createSequentialGroup()
                 .addGap(118, 118, 118)
@@ -151,7 +147,7 @@ public class RegisterPge extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addComponent(pic, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(Cmdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(texttts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(Cmd2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
@@ -240,9 +236,9 @@ public class RegisterPge extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_Cmd1ActionPerformed
 
-    private void CmddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CmddActionPerformed
+    private void textttsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textttsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CmddActionPerformed
+    }//GEN-LAST:event_textttsActionPerformed
   @Override
     public void paint(Graphics g) {
         Graphics2D g2 = (Graphics2D)g.create();
@@ -297,12 +293,12 @@ public class RegisterPge extends javax.swing.JPanel {
     private swing.Button Cmd;
     private swing.Button Cmd1;
     private swing.Button Cmd2;
-    private swing.Button Cmdd;
     private swing.panelTransparent Message;
     private swing.panelTransparent ProfileCom;
     private javax.swing.JLabel jLabel1;
     private swing.panelTransparent loading;
     private swing.ImageAvatar pic;
     private javax.swing.JLabel text;
+    private swing.Button texttts;
     // End of variables declaration//GEN-END:variables
 }
