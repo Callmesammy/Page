@@ -41,8 +41,8 @@ public class LoadingPage extends javax.swing.JLayeredPane {
         layout = new MigLayout("inset 0","[fill]", "[fill]");
         setLayout(layout);
         loginPge = new LoginPge();
-//        loginPge.setVisible(true);
-//        loginPge.setOpaque(false);
+        loginPge.setVisible(true);
+        loginPge.setOpaque(false);
         registerPge = new RegisterPge();
         registerPge.setBackground(new Color( 32, 68, 180));
         registerPge.setVisible(false);
@@ -110,13 +110,13 @@ public class LoadingPage extends javax.swing.JLayeredPane {
 
     }
     
-    private void userDetails(String username, String paswod){
+    private void userDetails(String Username, String Password){
         thr = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(200);
-                    registerPge.addMenuData(new ModelUser(new ImageIcon("/img/pics/picture.jpg"), "Enter Text", 1));
+                    Thread.sleep(2000);
+                    registerPge.addMenuData(new ModelUser(new ImageIcon(getClass().getResource("/img/pics/picture.jpg")), "Enter Text", 1));
 
                 } catch (Exception e) {
                     e.printStackTrace();

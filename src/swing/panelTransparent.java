@@ -33,8 +33,8 @@ public class panelTransparent extends JPanel{
 
     @Override
     public void paint(Graphics g) {
-        Graphics2D g2 = (Graphics2D)g.create();
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, getAlpha()));
+        Graphics2D g2 = (Graphics2D)g;
+        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
         super.paint(g); 
     }
     

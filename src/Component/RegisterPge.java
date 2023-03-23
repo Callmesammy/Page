@@ -14,7 +14,7 @@ import org.jdesktop.animation.timing.TimingTargetAdapter;
  *
  * @author HP
  */
-public class RegisterPge extends javax.swing.JPanel {
+public class RegisterPge extends javax.swing.JLayeredPane {
  
     private boolean selected;
     private float minate;
@@ -261,7 +261,8 @@ public class RegisterPge extends javax.swing.JPanel {
             }else{
                g2.fillRect(x, y, width, height);
             }
-        g2.dispose();  super.paint(g); 
+        g2.dispose();  
+        super.paint(g); 
         }
         
      private float easeOutBounce(float x) {
